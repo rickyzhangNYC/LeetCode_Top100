@@ -6,19 +6,37 @@ s = "anagram", t = "nagaram", return true.
 s = "rat", t = "car", return false.
 '''
 
-def anagram(str1,str2):
-    #Using a list to keep record of seen letters
-    str1 = list(str1)
-    for i in range(len(str2)):
-        if str2[i] in str1:
-            str1.remove(str2[i])
+def anagram(s,t):
+    # #Using a list to keep record of seen letters
+    # #Time Complexity O(n^2)
+    # #Space O(1)
+    # s = list(s)
+    # for i in range(len(t)):
+    #     if t[i] in s:
+    #         s.remove(t[i])
+    #     else:
+    #         return False
+    # return True
+
+    #Using a hash table to keep a counter
+    charDict = dict()
+    for i in s:
+        if i not in charDict:
+            charDict[i] = 1
         else:
+            charDict[i] += 1
+
+    for j in t:
+        if j not in charDict:
+            return False
+        else:
+            charDict[j] -= 1
+    for v in charDict.values():
+        if v != 0:
             return False
     return True
 
-    #
+s = 'anagram hhaa'
+t = 'margana haah'
 
-str1 = 'anagram hha'
-str2 = 'margana haha'
-
-print(anagram(str1,str2))
+print(anagram(s,t))
