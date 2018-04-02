@@ -20,17 +20,21 @@ def anagram(s,t):
 
     #Using a hash table to keep a counter
     charDict = dict()
+    # O(N)
     for i in s:
+        # O(1) complexity because checks if key is in dict
         if i not in charDict:
             charDict[i] = 1
         else:
             charDict[i] += 1
-
+    # O(N)
     for j in t:
         if j not in charDict:
             return False
         else:
             charDict[j] -= 1
+    # O(N)
+    # Checks each value in dictionary
     for v in charDict.values():
         if v != 0:
             return False
