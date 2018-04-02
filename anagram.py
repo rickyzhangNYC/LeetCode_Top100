@@ -11,6 +11,8 @@ def anagram(s,t):
     # #Time Complexity O(n^2)
     # #Space O(1)
     # s = list(s)
+    # if len(s) != len(t):
+    #     return False
     # for i in range(len(t)):
     #     if t[i] in s:
     #         s.remove(t[i])
